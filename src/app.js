@@ -5,8 +5,13 @@ import "bootstrap";
 import postStore from "./post.store";
 import renderPosts from "./renderPosts";
 
-postStore.init().then(res => {
-  renderPosts(res);
+// postStore.init().then(res => {
+//   renderPosts(res);
+// });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  postStore.init().then(res => {
+    renderPosts(res);
+  });
 });
-
-
