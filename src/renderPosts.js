@@ -1,6 +1,9 @@
 const postContainer = document.querySelector(".container.cardsection .row");
 const btnMorePosts = document.querySelector("#loadMore");
 
+
+
+
 function postTemplate(post, users, comments) {
   const user = users.find(user => user.id === post.userId);
   const postComents = comments.filter(comment => comment.postId === post.id);
@@ -58,6 +61,21 @@ function postTemplate(post, users, comments) {
   `;
 }
 
+
+function handlerPosts() {
+  const [...postCardsArr] = document.querySelectorAll('.card-container.d-none');
+  if (postCardsArr.length !== 0) {
+    postCardsArr.slice(0, 10).forEach(div => div.classList.remove("d-none"));
+    btnMorePosts.classList.remove("d-none");
+    btnMorePosts.classList.add("d-flex");
+  } else {
+    btnMorePosts.classList.remove("d-flex");
+    btnMorePosts.classList.add("d-none");
+    alert("There are not any posts")
+  };
+}
+
+
 function renderPosts({ posts, users, comments }) {
   let fragment = "";
   posts.forEach(post => {
@@ -66,7 +84,7 @@ function renderPosts({ posts, users, comments }) {
   });
  
   postContainer.insertAdjacentHTML("afterbegin", fragment);
-
+  //jQuery
   // $(function() {
   //   $(".card-container").slice(0, 10).show();
   //   $("#loadMore").on("click", e => {
@@ -75,15 +93,8 @@ function renderPosts({ posts, users, comments }) {
   //   })
   // })
 
-
-  const [...postCardsArr] = document.querySelectorAll('.card-container');
-  postCardsArr.slice(0, 10).forEach(div => div.classList.remove("d-none"));
-
-  btnMorePosts.addEventListener("click", () => {
-    const [...hiddenPostCardsArr] = document.querySelectorAll('.card-container.d-none');
-    hiddenPostCardsArr.slice(0, 10).forEach(div => div.classList.remove("d-none"));
-  })
-
+ 
+  handlerPosts();
 }
 
-export default renderPosts;
+export { renderPosts, btnMorePosts, handlerPosts };

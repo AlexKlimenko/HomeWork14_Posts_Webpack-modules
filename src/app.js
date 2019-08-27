@@ -3,11 +3,8 @@ import "./style.css";
 import "bootstrap";
 
 import postStore from "./post.store";
-import renderPosts from "./renderPosts";
+import { renderPosts, btnMorePosts, handlerPosts } from "./renderPosts";
 
-// postStore.init().then(res => {
-//   renderPosts(res);
-// });
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,3 +12,5 @@ document.addEventListener("DOMContentLoaded", () => {
     renderPosts(res);
   });
 });
+
+btnMorePosts.addEventListener("click", () => handlerPosts());
