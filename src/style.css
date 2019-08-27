@@ -1,0 +1,17 @@
+span.user-sign {
+  font-size: 14px;
+}
+
+span.comment-email {
+  font: 10px sans-serif;
+}
+p.comment-name {
+  font: 12px sans-serif;
+  font-weight: bold;
+}
+p.comment-body {
+  font: 14px serif;
+}
+/* .card-container {
+  display: none;
+} */
