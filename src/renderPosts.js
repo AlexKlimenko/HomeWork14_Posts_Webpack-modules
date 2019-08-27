@@ -64,14 +64,13 @@ function postTemplate(post, users, comments) {
 
 function handlerPosts() {
   const [...postCardsArr] = document.querySelectorAll('.card-container.d-none');
-  if (postCardsArr.length !== 0) {
-    postCardsArr.slice(0, 10).forEach(div => div.classList.remove("d-none"));
-    btnMorePosts.classList.remove("d-none");
-    btnMorePosts.classList.add("d-flex");
-  } else {
+  postCardsArr.slice(0, 10).forEach(div => div.classList.remove("d-none"));
+  if (postCardsArr.length <= 10) {
     btnMorePosts.classList.remove("d-flex");
     btnMorePosts.classList.add("d-none");
-    alert("There are not any posts")
+  } else {
+    btnMorePosts.classList.remove("d-none");
+    btnMorePosts.classList.add("d-flex");
   };
 }
 
